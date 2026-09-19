@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const { connectDB, getDBStatus } = require('./config/db');
 const logger = require('./utils/logger');
 const { apiLimiter } = require('./middleware/rateLimiter');
+const setupSwagger = require('./config/swagger');
 
 // Load env vars
 dotenv.config();
@@ -22,6 +23,9 @@ app.use(cors());
 // Global API Rate Limiting
 app.use('/api/', apiLimiter);
 
+// Swagger API Documentation
+setupSwagger(app);
+
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/brands', require('./routes/brandRoutes'));
@@ -36,6 +40,7 @@ app.get('/api/health', (req, res) => {
     status: 'ok',
     service: 'PostWise-AI API Server',
     database: dbStatus,
+    swaggerDocs: 'http://localhost:5000/api/docs',
     timestamp: new Date().toISOString(),
   });
 });
@@ -59,6 +64,7 @@ const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
     logger.info(`[PostWise-AI Backend] Server running on port ${PORT}`);
+    logger.info(`[Swagger UI] API Documentation available at http://localhost:${PORT}/api/docs`);
   });
 }
 

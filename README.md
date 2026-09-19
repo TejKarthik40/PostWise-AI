@@ -55,7 +55,7 @@ Built with a **Node.js/Express** backend, **MongoDB (Mongoose)** with compound d
 | Layer | Technologies |
 | :--- | :--- |
 | **Frontend** | React 18, Vite, Tailwind CSS, Lucide React Icons, React Router DOM |
-| **Backend** | Node.js (v18+), Express.js, Zod, Helmet, Express-Rate-Limit |
+| **Backend** | Node.js (v18+), Express.js, Zod, Helmet, Express-Rate-Limit, Swagger UI |
 | **Database** | MongoDB with Mongoose (Compound Indexes + automated in-memory fallback) |
 | **Testing** | Jest, Supertest |
 | **Logging** | Custom Structured Logger with Redaction (`utils/logger.js`) |
@@ -87,6 +87,15 @@ LINKEDIN_CLIENT_SECRET=your_client_secret
 LINKEDIN_REDIRECT_URI=http://localhost:5000/api/linkedin/auth/callback
 LINKEDIN_ACCESS_TOKEN=your_direct_linkedin_access_token
 ```
+
+---
+
+## Interactive Swagger API Documentation
+
+PostWise-AI includes an interactive **OpenAPI 3.0 / Swagger UI** documentation interface.
+
+- **Swagger UI Interactive Explorer**: Visit **`http://localhost:5000/api/docs`** in your browser when the server is running to test API endpoints interactively.
+- **OpenAPI JSON Spec**: **`http://localhost:5000/api/docs.json`**
 
 ---
 
